@@ -31,7 +31,7 @@ interface SleepDatabaseDao{
     //Return thr rows where nightId is equal to the key(we will pass this in kotlin function)
     // function will return the object of class SleepNight
     @Query("SELECT * FROM daily_sleep_quality_table WHERE nightId = :key")
-    fun get(key: PrimaryKey):SleepNight
+    fun get(key: Long):SleepNight?
 
 
     //This will clear the table without knowing about its content
