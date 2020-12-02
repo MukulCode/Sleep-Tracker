@@ -23,6 +23,9 @@
      the whole ViewModel, so that we can access the LiveData,
      click handlers, and state variables. -->
     <data>
+        <variable
+            name="sleepQualityViewModel"
+            type="com.example.android.trackmysleepquality.sleepquality.SleepQualityViewModel" />
 
     </data>
 
@@ -56,6 +59,7 @@
             app:layout_constraintEnd_toStartOf="@+id/quality_one_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_text"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(0)}"
             app:srcCompat="@drawable/ic_sleep_0" />
 
         <ImageView
@@ -64,6 +68,7 @@
             android:layout_height="@dimen/icon_size"
             android:contentDescription="@string/quality_1"
             app:layout_constraintBottom_toBottomOf="@+id/quality_zero_image"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(1)}"
             app:layout_constraintEnd_toStartOf="@+id/quality_two_image"
             app:layout_constraintStart_toEndOf="@+id/quality_zero_image"
             app:srcCompat="@drawable/ic_sleep_1" />
@@ -74,6 +79,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/margin"
             android:contentDescription="@string/quality_2"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(2)}"
             app:layout_constraintBottom_toBottomOf="@+id/quality_one_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/quality_one_image"
@@ -88,6 +94,7 @@
             android:layout_marginBottom="@dimen/margin"
             android:contentDescription="@string/quality_3"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(3)}"
             app:layout_constraintEnd_toStartOf="@+id/quality_four_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quality_zero_image"
@@ -99,6 +106,7 @@
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:contentDescription="@string/quality_4"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(4)}"
             app:layout_constraintBottom_toBottomOf="@+id/quality_three_image"
             app:layout_constraintEnd_toStartOf="@+id/quality_five_image"
             app:layout_constraintStart_toEndOf="@+id/quality_three_image"
@@ -111,6 +119,7 @@
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="@dimen/margin"
             android:contentDescription="@string/quality_5"
+            android:onClick="@{() -> sleepQualityViewModel.onSetSleepQuality(5)}"
             app:layout_constraintBottom_toBottomOf="@+id/quality_four_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/quality_four_image"
