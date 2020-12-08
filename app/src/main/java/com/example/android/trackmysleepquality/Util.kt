@@ -7,7 +7,9 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import android.widget.TextView
 import androidx.core.text.HtmlCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.trackmysleepquality.database.SleepNight
 import java.text.SimpleDateFormat
 
@@ -89,3 +91,13 @@ fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
+
+
+
+/**
+ * ViewHolder that holds a single [TextView].
+ *
+ * A ViewHolder holds a view for the [RecyclerView] as well as providing additional information
+ * to the RecyclerView such as where on the screen it was last drawn during scrolling.
+ */
+class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)
