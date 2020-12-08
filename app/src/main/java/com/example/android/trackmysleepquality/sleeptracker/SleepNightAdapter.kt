@@ -1,24 +1,18 @@
 package com.example.android.trackmysleepquality.sleeptracker
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.convertDurationToFormatted
 import com.example.android.trackmysleepquality.convertNumericQualityToString
 import com.example.android.trackmysleepquality.database.SleepNight
 
-class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>(){
-    var data = listOf<SleepNight>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
-
+class SleepNightAdapter : androidx.recyclerview.widget.ListAdapter<SleepNight,SleepNightAdapter.ViewHolder>(SleepNightDiffCallback()){
 
     //This is called when recyclerView needs a viewHolder of the given type to represent an item
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,13 +23,11 @@ class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>(){
     //This will tell the recycler view to how to actually draw an item
     //This update the content of viewHolder on the position provided
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         val res = holder.itemView.context.resources
         holder.bind(item)
     }
 
-    //Telling the size of the data
-    override fun getItemCount() = data.size
 
 
     class ViewHolder private constructor(itemView : View):RecyclerView.ViewHolder(itemView){
@@ -66,6 +58,20 @@ class SleepNightAdapter : RecyclerView.Adapter<SleepNightAdapter.ViewHolder>(){
                 return ViewHolder(view)
             }
         }
+    }
+
+
+    class SleepNightDiffCallback : DiffUtil.ItemCallback<SleepNight>(){
+
+
+        override fun areItemsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+            return oldItem.nightId == newItem.nightId
+        }
+
+        override fun areContentsTheSame(oldItem: SleepNight, newItem: SleepNight): Boolean {
+            return oldItem == newItem
+        }
+
     }
 
 
